@@ -1,20 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiFetch, callApiFn } from "@/services/request";
-import { Office } from "@/store/offices/types";
 import { City } from "@/store/cities/types";
+import { Vacancy } from "@/store/vacancies/types";
 
-export const getOffices = createAsyncThunk(
-  "offices/getOffices",
+export const getVacancies = createAsyncThunk(
+  "vacancies/getVacancies",
   async (city: City) => {
     try {
       const now = new Date();
       let url = `${
         process.env.VITE_APP_API_URL
-      }/v1/order/address-list?currentHour=${now.getHours()}`;
+      }/v1/vacancy`;
 
-      if (city && city.id) url += `&city=${city?.id}`;
+      if (city && city.id) url += `/get-by-city?city_id=${city?.id}`;
 
-      const result = await callApiFn<Office[]>(() =>
+      const result = await callApiFn<Vacancy[]>(() =>
         apiFetch({
           url: url,
           options: {

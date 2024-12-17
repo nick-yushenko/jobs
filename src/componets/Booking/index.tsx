@@ -10,13 +10,11 @@ import {
 import Input from "@/ui/Input";
 import Dropdown, { DropdownOption } from "@/ui/Dropdown";
 import clx from "classnames";
-import { Currency } from "@/store/currencies/types";
-import { Employee} from "@/store/customer/types";
 import Loader from "@/ui/Loader";
+import { Employee } from "@/store/employee/types";
 
 type TProps = {
   onSubmit: (employee: Employee) => void;
-  currencies: Currency[];
   vacancies: DropdownOption[];
   loading: boolean;
 };
@@ -35,7 +33,7 @@ const Booking: React.FC<TProps> = ({
 
   const validate = () => {
     let isValid = true;
-    if (!phone || phone.length !== 12) isValid = false;
+    if (!phone || !(phone.length === 10 || phone.length === 12)) isValid = false;
     if (!vacancy) isValid = false;
 
     return isValid;
@@ -49,12 +47,13 @@ const Booking: React.FC<TProps> = ({
 
   const onChangePhone = (val: string) => {
     setPhone(val.replace(/[^\+\d]/g, ""));
+    console.log("fie")
   };
 
   const onSubmitHandler = () => {
     const obj: Employee = {
       phone: phone ?? "",
-      vacancy_id: 0,
+      vacancy_id: vacancy?.id ?? 0,
     };
 
     if (validate()) onSubmit(obj);

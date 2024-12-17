@@ -7,7 +7,7 @@ export const container = css`
   flex-wrap: wrap;
 `;
 export const loader = css`
-  height: 400px;
+  height: 200px;
 `;
 
 export const formItem = css`

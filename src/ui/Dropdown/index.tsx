@@ -5,21 +5,16 @@ import {
   CustomSelect,
   invalidText,
   noOptions,
-  optionClosed,
   optionLabel,
   optionStyles,
-  optionTime,
 } from "@/ui/Dropdown/style";
 import Select from "react-select";
 import { Icon } from "@/ui/Icon";
-import { logo } from "@/componets/Header/style";
 
 export interface DropdownOption {
   value: number;
   id: number;
   label: string;
-  timeInfo: string;
-  isOpened: boolean;
 }
 
 type DropdownProps = {
@@ -41,11 +36,8 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onChange, isError }) => {
 
   const formatOptionLabel = (opt: DropdownOption) => (
     <div key={opt.id} className={optionStyles}>
-      <span className={clx(optionLabel, !opt.isOpened && "closed")}>
+      <span className={clx(optionLabel)}>
         {opt?.label}
-      </span>
-      <span className={clx(optionTime, !opt.isOpened && optionClosed)}>
-        {opt.timeInfo}
       </span>
     </div>
   );

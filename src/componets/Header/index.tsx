@@ -5,16 +5,13 @@ import {
   header,
   headerWrapper,
   headerWrapperMb,
-  infoItem,
-  infoItem_icon,
-  infoItem_text,
-  infoItem_title,
-  infoItems,
+  list,
+  listItem,
   logo,
-  phone,
+  phone, styledIcon,
   subheader,
   wallet,
-  warning,
+  text,
 } from "@/componets/Header/style";
 import { Icon } from "@/ui/Icon";
 import Link from "@/ui/Link";
@@ -59,26 +56,23 @@ const Header: React.FC<TProps> = ({ onChangeCity }) => {
           <div className={headerWrapperMb}>
             <Title.H1>Работа в Камкомбанке</Title.H1>
 
-            <div className={infoItems}>
-              <div className={infoItem}>
-                <Icon name={"currency-icon"} className={infoItem_icon} />
-                <div>
-                  <span className={infoItem_title}>$ ¥ £ € CNY AED</span>
-                  <span className={infoItem_text}>Всегда в наличии</span>
-                </div>
+            <div className={list}>
+              <div className={listItem}>
+                <Icon name={"bullet-icon"} className={styledIcon}/>
+                <span>Комфортные условия</span>
               </div>
-
-              <div className={infoItem}>
-                <Icon name={"check-icon"} className={infoItem_icon} />
-                <div>
-                  <span className={infoItem_title}>Бесплатный резерв</span>
-                  <span className={infoItem_text}>Гарантия покупки</span>
-                </div>
+              <div className={listItem}>
+                <Icon name={"bullet-icon"} className={styledIcon}/>
+                <span>Высокий уровень оплаты</span>
+              </div>
+              <div className={listItem}>
+                <Icon name={"bullet-icon"} className={styledIcon}/>
+                <span>Уверенность в завтрашнем дне</span>
               </div>
             </div>
 
-            <span className={warning}>
-              Резервирование действует до конца дня
+            <span className={text}>
+             Станьте частью команды профессионалов!
             </span>
           </div>
         </Layout.Wrapper>

@@ -6,6 +6,7 @@ export interface Employee {
   id?: string;
   phone: string;
   vacancy_id: number;
+  token?: any;
 }
 
 export interface EmployeeState {

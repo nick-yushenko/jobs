@@ -123,9 +123,6 @@ export const CustomSelect = css`
     div {
       position: absolute;
     }
-    span:last-child {
-      display: none;
-    }
   }
 
 
@@ -186,10 +183,6 @@ export const optionLabel = css`
   letter-spacing: -0.16px;
 
   color: ${Palette.text};
-
-  &.closed {
-    color: ${Palette.text_second};
-  }
 `;
 
 export const optionTime = css`

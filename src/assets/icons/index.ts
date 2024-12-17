@@ -16,5 +16,6 @@ import "./fail-icon.svg";
 import "./phone-icon.svg";
 import "./gosuslugi-icon.svg";
 import "./arrow-gos.svg";
+import "./bullet-icon.svg";
 
 

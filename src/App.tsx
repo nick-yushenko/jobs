@@ -5,27 +5,24 @@ import { appContent } from "@/style";
 import Booking from "@/componets/Booking";
 import Confirm from "@/componets/Confirm";
 import Thx from "@/componets/Thx";
-import { getCurrencies } from "@/store/currencies/actions";
 import { useAppDispatch } from "@/store";
 import { useSelector } from "react-redux";
-import { getCurrenciesState } from "@/store/currencies/selector";
-import { getOfficesState } from "@/store/offices/selector";
-import { getOffices } from "@/store/offices/actions";
-import { prepareOfficesList } from "@/utils/prepareOfficesList";
-import { getCustomerState } from "@/store/customer/selector";
-import { fetchCustomer } from "@/store/customer/actions";
-import { Customer } from "@/store/customer/types";
-import { customerSlice } from "@/store/customer/reducer";
 import { apiFetch, callApiFn } from "@/services/request";
 import { getCitiesState } from "@/store/cities/selector";
 import Cities from "@/componets/Cities";
 import AuthGos from "@/componets/AuthGos";
+import {getVacancies} from "@/store/vacancies/actions";
+import {getEmployeeState} from "@/store/employee/selector";
+import {fetchEmployee} from "@/store/employee/actions";
+import {Employee} from "@/store/employee/types";
+import {employeeSlice} from "@/store/employee/reducer";
+import {getVacanciesState} from "@/store/vacancies/selector";
+import {prepareVacanciesList} from "@/utils/prepareVacanciesList";
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const currenciesState = useSelector(getCurrenciesState);
-  const officesState = useSelector(getOfficesState);
-  const customerState = useSelector(getCustomerState);
+  const employeeState = useSelector(getEmployeeState);
+  const vacanciesState = useSelector(getVacanciesState);
   const citiesState = useSelector(getCitiesState);
   const [gosusligiAuth, setGosusligiAuth] = useState<string>("");
 
@@ -36,16 +33,16 @@ const App = () => {
   const [isAuthGos, setIsAuthGos] = useState(false);
   const [isChooseCity, setIsChooseCity] = useState(true);
 
-  const onSubmitForm = (customer: Customer) => {
-    void dispatch(customerSlice.actions.setCustomer(customer));
-    void dispatch(fetchCustomer(customer));
+  const onSubmitForm = (employee: Employee) => {
+    void dispatch(employeeSlice.actions.setCustomer(employee));
+    void dispatch(fetchEmployee(employee));
   };
 
   const onSubmitSMSCode = async (sms: any) => {
     const url = `${process.env.VITE_APP_API_URL}/v1/candidates/validate-sms`;
     const formData = new FormData();
 
-    sms.token = customerState.data?.token;
+    sms.token = employeeState.data?.token;
 
     for (const key in sms) {
       if (sms.hasOwnProperty(key)) {
@@ -83,19 +80,18 @@ const App = () => {
   };
 
   const onRetry = () => {
-    void dispatch(fetchCustomer(customerState.data));
+    void dispatch(fetchEmployee(employeeState.data));
   };
 
   useEffect(() => {
     if (!isChooseCity && citiesState.current) {
-      void dispatch(getCurrencies());
-      void dispatch(getOffices(citiesState.current));
+      void dispatch(getVacancies(citiesState.current));
     }
   }, [isChooseCity, citiesState.current]);
 
   useEffect(() => {
-    if (customerState.success) setIsConfirm(true);
-  }, [customerState]);
+    if (employeeState.success) setIsConfirm(true);
+  }, [employeeState]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -133,8 +129,8 @@ const App = () => {
             setIsConfirm(false);
             setSmsError(undefined);
           }}
-          phone={customerState.data?.phone ?? ""}
-          loading={customerState.loading}
+          phone={employeeState.data?.phone ?? ""}
+          loading={employeeState.loading}
           error={smsError}
         />
       )}
@@ -158,9 +154,8 @@ const App = () => {
       <Layout.Main className={appContent}>
         <Booking
           onSubmit={onSubmitForm}
-          currencies={currenciesState.currencies}
-          offices={prepareOfficesList(officesState.offices)}
-          loading={officesState.loading || currenciesState.loading}
+          vacancies={prepareVacanciesList(vacanciesState.vacancies)}
+          loading={vacanciesState.loading}
         />
       </Layout.Main>
     </>

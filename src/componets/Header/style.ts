@@ -29,16 +29,30 @@ export const header = css`
   position: relative;
   background-color: ${Palette.background};
   @media (max-width: 740px) {
-    padding-top: 100px;
+    padding-top: 0;
+    padding-bottom: 340px;
+    z-index: 5;
+  }
+
+  @media (max-width: 450px) {
+    padding-top: 0;
+    padding-bottom: 280px;
+    z-index: 5;
+  }
+  @media (max-width: 400px) {
+    padding-top: 0;
+    padding-bottom: 230px;
     z-index: 5;
   }
 `;
 
 export const headerWrapper = css`
-  padding-bottom: 92px;
+  padding-bottom: 120px;
 
   @media (max-width: 740px) {
     padding: 0;
+    position: static;
+
   }
 
   @media (max-width: 450px) {
@@ -46,20 +60,51 @@ export const headerWrapper = css`
     margin: 0;
   }
 `;
-export const headerWrapperMb = css`
-  @media (max-width: 740px) {
-    position: relative;
-    border: 1px solid ${Palette.border};
-    background-color: ${Palette.white};
-    border-radius: 16px;
 
-    padding: 32px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
-    transform: translateY(124px);
+export const wallet = css`
+  position: absolute;
+  bottom: 0;
+  right: 9px;
+  width: 516px;
+  height: 374px;
+
+  @media (max-width: 1100px) {
+    width: 420px;
+    height: 374px;
+  }
+  @media (max-width: 960px) {
+    width: 370px;
+    height: 320px;
+    right: -40px;
   }
 
+  @media (max-width: 740px) {
+    bottom: 0;
+    top: auto;
+    left: 50%;
+    transform: translate(-50%);
+    right: auto;
+    width: 500px;
+    height: 380px;
+  }
   @media (max-width: 450px) {
-    padding: 32px;
+    bottom: -30px;
+    top: auto;
+    left: 2%;
+    right: auto;
+    width: 96%;
+    height: auto;
+    transform: none;
+  }
+
+  @media (max-width: 400px) {
+    bottom: -20px;
+  }
+`;
+export const headerWrapperMb = css`
+
+  @media (max-width: 450px) {
+    padding: 32px 16px;
 
     width: 100%;
     margin: 0;
@@ -101,84 +146,30 @@ export const phone = css`
   }
 `;
 
-export const wallet = css`
-  position: absolute;
-  bottom: -14px;
-  right: 9px;
-  width: 374px;
-  height: 374px;
 
-  @media (max-width: 960px) {
-    width: 320px;
-    height: 320px;
-    right: -20px;
-  }
 
-  @media (max-width: 740px) {
-    bottom: auto;
-    top: -100px;
-    right: 0;
+export const list = css`
+  margin-bottom: 12px;
+`;
+
+export const listItem = css`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+
+  span {
+    font-size: 16px;
+    line-height: 24px;
   }
 `;
 
-export const infoItems = css`
-  display: flex;
-
-  margin-bottom: 24px;
+export const styledIcon = css`
+  width: 16px;
+  height: 12px;
 `;
-export const infoItem = css`
-  display: flex;
 
-  margin-right: 24px;
-`;
-export const infoItem_icon = css`
-  width: 28px;
-  height: 28px;
-
-  margin-right: 8px;
-`;
-export const infoItem_title = css`
-  display: block;
-
+export const text = css`
   font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 24px;
-
-  letter-spacing: -0.16px;
-`;
-
-export const infoItem_text = css`
-  display: block;
-
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-
-  letter-spacing: -0.12px;
-
-  color: ${Palette.text_second};
-`;
-export const warning = css`
-  display: inline-block;
-  padding: 8px 16px;
-
-  margin-top: 52px;
-  border-radius: 16px;
-
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-
-  letter-spacing: -0.12px;
-
-  color: ${Palette.text_second};
-  background-color: ${Palette.white};
-
-  @media (max-width: 740px) {
-    padding: 0;
-    margin-top: 0;
-  }
 `;
