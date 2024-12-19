@@ -20,6 +20,18 @@ export const textStyles = css`
   max-width: 100%;
 `;
 
+export const text2Styles = css`
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: -0.2px;
+  text-align: center;
+  margin-bottom: 16px;
+
+  max-width: 100%;
+`;
+
 export const submit = css`
   height: 56px;
   border-radius: 8px;

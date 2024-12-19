@@ -28,8 +28,7 @@ const AuthGos: React.FC<TProps> = ({ url }) => {
       <div className={container}>
         <Icon name={"success-icon"} width={44} height={44} />
         <p className={textStyles}>
-          Авторизуйтесь через Госуслуги для резервирования суммы до конца дня.
-          Это быстро и безопасно.
+          Для того, чтобы не заполнять анкету, предлагаем авторизоваться через Госуслуги
         </p>
         <a href={url} className={gos}>
           <Icon name={"gosuslugi-icon"} width={50} height={50} />

@@ -42,9 +42,9 @@ const Header: React.FC<TProps> = ({ onChangeCity }) => {
             {citiesState.current.name}
           </div>
 
-          <Link href={"tel:88002004638"} target={"_blank"} className={phone}>
+          <Link href={"tel:89872602041"} target={"_blank"} className={phone}>
             <Icon name={"phone-icon"} width={24} height={24} />
-            <span>8 800 200 46 38</span>
+            <span>8 987 260 20 41</span>
           </Link>
         </Layout.Wrapper>
       </Layout.Main>
